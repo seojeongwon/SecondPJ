@@ -1,10 +1,6 @@
 package jw.seo.secondgitpj.net;
 
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
-
 import io.reactivex.Observable;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import jw.seo.secondgitpj.model.GithubUser;
@@ -55,11 +51,20 @@ public class ApiConnection {
     }
 
 
-//    ---------------------------------------------------------------------
+    //    ---------------------------------------------------------------------
     public Observable<GithubUser> getUser() {
-        return  getRetrofitService()
+        return getRetrofitService()
                 .getGithubUser2("bearkinf")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+//    public Subscription getUser2(
+//            @NonNull Observer<GithubUser> observer) {
+//        return (Subscription) getRetrofitService()
+//                .getGithubUser2("bearkinf")
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(observer);
+//    }
 }
