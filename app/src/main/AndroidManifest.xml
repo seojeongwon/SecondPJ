@@ -1,23 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="jw.seo.secondgitpj">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
+        android:name="jw.seo.kotlin.ex01.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity
+            android:name="jw.seo.kotlin.ex01.activity.KotlinSubActivity"
+            android:label="@string/title_activity_kotlin_sub"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="jw.seo.kotlin.ex01.activity.KotlinMainActivity">
+
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name="jw.seo.kotlin.ex01.activity.TestActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name=".receiver.OutgoingReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
 
 </manifest>
